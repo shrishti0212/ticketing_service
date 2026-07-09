@@ -8,11 +8,10 @@ declare global {
   var signin: (id?: string) => string[];
 }
 
-
-
 jest.mock('../nats-wrapper');
-
-process.env.STRIPE_KEY = 'sk_test_fake';
+if (!process.env.STRIPE_KEY) {
+  throw new Error('STRIPE_KEY must be defined');
+}
 
 let mongo:any;
 
