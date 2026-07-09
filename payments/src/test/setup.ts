@@ -8,9 +8,8 @@ declare global {
   var signin: (id?: string) => string[];
 }
 
-
-
 jest.mock('../nats-wrapper');
+jest.mock('../stripe');
 
 process.env.STRIPE_KEY = 'sk_test_fake';
 
