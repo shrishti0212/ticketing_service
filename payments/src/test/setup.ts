@@ -9,9 +9,9 @@ declare global {
 }
 
 jest.mock('../nats-wrapper');
-jest.mock('../stripe');
-
-process.env.STRIPE_KEY = 'sk_test_fake';
+if (!process.env.STRIPE_KEY) {
+  throw new Error('STRIPE_KEY must be defined');
+}
 
 let mongo:any;
 
